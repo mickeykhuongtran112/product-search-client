@@ -31,6 +31,7 @@ function App() {
       const { data } = response.data;
 
       const newProduct = {
+	      Timestamp: new Date().toLocaleString(),
         QRCode: inputValue.trim(),
         Product_Name: data.product_name || 'Unknown',
         Lot: data.lot || 'N/A',
@@ -88,6 +89,7 @@ function App() {
     if (products.length === 0) return;
 
     const worksheet = XLSX.utils.json_to_sheet(products.map((p) => ({
+      Time: p.Timestamp,
       QRCode: p.QRCode,
       Product_Name: p.Product_Name,
       Lot: p.Lot,
